@@ -1,0 +1,39 @@
+<div class="col-md-6 offset-md-3">
+  <h3>Update Stocks</h3>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label> Libelle Stock</label>
+      <input
+        type="text"
+        class="form-control"
+        id="libelleStock"
+        [(ngModel)]="stock.libelleStock"
+        name="libelleStock"
+      />
+    </div>
+
+    <div class="form-group">
+      <label> Qte</label>
+      <input
+        type="text"
+        class="form-control"
+        id="qte"
+        [(ngModel)]="stock.qte"
+        name="qte"
+      />
+    </div>
+
+    <div class="form-group">
+      <label> qteMin</label>
+      <input
+        type="text"
+        class="form-control"
+        id="qteMin"
+        [(ngModel)]="stock.qteMin"
+        name="qteMin"
+      />
+    </div>
+
+    <button class="btn btn-success" type="submit">Submit</button>
+  </form>
+</div>
