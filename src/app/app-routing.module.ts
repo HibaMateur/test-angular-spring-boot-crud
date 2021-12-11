@@ -16,7 +16,10 @@ const routes: Routes = [
   { path: '', redirectTo: 'stocks', pathMatch: 'full' },
   { path: 'stock-details/:idStock', component: StockDetailsComponent },
   { path: 'update-stock/:idStock', component: UpdateStockComponent },
-  { path: 'reclamation-update/:id', component: ReclamationUpdateComponent },
+  {
+    path: 'reclamation-update/:idReclamation',
+    component: ReclamationUpdateComponent,
+  },
 
   { path: 'reclamation-details/:id', component: ReclamationDetailsComponent },
   { path: 'reclamation-list', component: ReclamationListComponent },

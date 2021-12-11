@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Stock } from './stock';
@@ -30,8 +30,23 @@ export class StockService {
     return this.http.get<Stock>(this.url + `/retrieve-stock/${idStock}`);
   }
   exportExcel(): Observable<any> {
-    return this.http.get<Stock>(this.url + `/export-excel`, {
+    return this.http.get<Stock>(this.url + `/downloadExcelFile`, {
       responseType: 'arraybuffer' as 'json',
     });
+  }
+  exportPDF(): Observable<any> {
+    return this.http.get<Stock>(this.url + `/pdfDownload`, {
+      responseType: 'arraybuffer' as 'json',
+    });
+  }
+  pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
+    const data: FormData = new FormData();
+    data.append('file', file);
+    const newRequest = new HttpRequest(
+      'POST',
+      'http://localhost:8084/SpringMVC/stocks/upload',
+      data
+    );
+    return this.http.request(newRequest);
   }
 }

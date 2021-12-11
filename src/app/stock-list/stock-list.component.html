@@ -9,7 +9,15 @@
 />
 <h1>
   <a class="btn btn-outline-success" (click)="exportToExcel()"
-    ><i class="fa fa-plus-square">Download</i></a
+    ><i class="fa fa-plus-square">Download EXCEL</i></a
+  >
+  <input
+    type="file"
+    class="btn btn-outline-success"
+    (change)="upload($event)"
+  /><i class="fa fa-plus-square"></i>
+  <a class="btn btn-outline-success" (click)="exportToPDF()"
+    ><i class="fa fa-plus-square">Download PDF</i></a
   >
 </h1>
 

@@ -18,9 +18,11 @@ export class ReclamationListComponent implements OnInit {
   ngOnInit(): void {
     this.getAllReclamation();
   }
+
   private getAllReclamation() {
     this.reclamationService.getAllReclamations().subscribe((data) => {
       this.reclamations = data;
+      console.log(data);
     });
   }
 

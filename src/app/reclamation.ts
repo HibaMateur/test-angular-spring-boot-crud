@@ -1,7 +1,7 @@
 export class Reclamation {
-  idReclamation: any;
-  adresse: any;
+  idReclamation: number;
+  adresse: string;
   dateReclamation: any;
-  description: any;
-  idClient: any;
+  description: string;
+  clientReclamation: { idClient: any };
 }

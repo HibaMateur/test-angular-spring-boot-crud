@@ -9,7 +9,7 @@ import { ReclamationService } from '../reclamation.service';
   styleUrls: ['./reclamation-update.component.css'],
 })
 export class ReclamationUpdateComponent implements OnInit {
-  id: number;
+  idReclamation: number;
   reclamation: Reclamation = new Reclamation();
   constructor(
     private reclamationService: ReclamationService,
@@ -18,9 +18,9 @@ export class ReclamationUpdateComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['id'];
+    this.idReclamation = this.route.snapshot.params['idReclamation'];
 
-    this.reclamationService.getReclamationById(this.id).subscribe(
+    this.reclamationService.getReclamationById(this.idReclamation).subscribe(
       (data) => {
         this.reclamation = data;
       },
@@ -29,7 +29,7 @@ export class ReclamationUpdateComponent implements OnInit {
   }
   onSubmit() {
     this.reclamationService
-      .updateReclamation(this.id, this.reclamation)
+      .updateReclamation(this.idReclamation, this.reclamation)
       .subscribe(
         (data) => {
           this.getReclamationById();

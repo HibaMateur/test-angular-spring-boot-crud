@@ -10,6 +10,7 @@ import { StockService } from '../stock.service';
 export class StockListComponent implements OnInit {
   stockList: any;
   libelleStock: any;
+
   constructor(private stockService: StockService, private router: Router) {}
   ngOnInit(): void {
     this.getAllStock();
@@ -47,6 +48,21 @@ export class StockListComponent implements OnInit {
   }
   exportToExcel() {
     this.stockService.exportExcel().subscribe((responseMessage: any) => {
+      let file = new Blob([responseMessage], {
+        type: 'application/vnd.ms-excel',
+      });
+      var fileURL = URL.createObjectURL(file);
+      window.open(fileURL);
+    });
+  }
+
+  upload(event: any) {
+    this.stockService
+      .pushFileToStorage(event.target.files[0])
+      .subscribe((event) => {});
+  }
+  exportToPDF() {
+    this.stockService.exportPDF().subscribe((responseMessage: any) => {
       let file = new Blob([responseMessage], {
         type: 'application/vnd.ms-excel',
       });

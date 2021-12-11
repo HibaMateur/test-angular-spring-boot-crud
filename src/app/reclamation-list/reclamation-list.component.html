@@ -1,4 +1,4 @@
-<h2>Employee List</h2>
+<h2>Reclamation List</h2>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -13,7 +13,7 @@
       <td>{{ reclamation.adresse }}</td>
       <td>{{ reclamation.dateReclamation }}</td>
       <td>{{ reclamation.description }}</td>
-      <td>{{ reclamation.idClient }}</td>
+      <td>{{ reclamation?.clientReclamation?.idClient }}</td>
       <td>
         <button
           (click)="updateReclamation(reclamation.idReclamation)"

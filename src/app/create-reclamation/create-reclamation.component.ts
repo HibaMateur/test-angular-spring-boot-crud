@@ -9,15 +9,18 @@ import { ReclamationService } from '../reclamation.service';
   styleUrls: ['./create-reclamation.component.css'],
 })
 export class CreateReclamationComponent implements OnInit {
-  idClient: any;
+  idClient: number;
   reclamation: Reclamation = new Reclamation();
+
   constructor(
     private reclamationService: ReclamationService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.reclamation.clientReclamation = { idClient: null };
+  }
   saveReclamation() {
     this.reclamationService.createReclamation(this.reclamation).subscribe(
       (data) => {

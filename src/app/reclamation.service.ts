@@ -26,8 +26,14 @@ export class ReclamationService {
       idClient: 1,
     });
   }
-  updateReclamation(id: number, reclamation: Reclamation): Observable<any> {
-    return this.http.put(this.url + `/modify-reclamation/${id}`, reclamation);
+  updateReclamation(
+    idReclamation: number,
+    reclamation: Reclamation
+  ): Observable<any> {
+    return this.http.put(
+      this.url + `/modify-reclamation/${idReclamation}`,
+      reclamation
+    );
   }
   getReclamationById(idClient: number): Observable<Reclamation> {
     return this.http.get<Reclamation>(
