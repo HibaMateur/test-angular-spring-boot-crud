@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Stock } from './stock';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +10,7 @@ import { Stock } from './stock';
 export class StockService {
   constructor(private http: HttpClient) {}
   url: string = 'http://localhost:8084/SpringMVC/stocks';
+
   getAllStocks(): Observable<any> {
     return this.http.get<any>(this.url + `/retrieve-all-stocks`);
   }
@@ -26,5 +28,10 @@ export class StockService {
   }
   getStockById(idStock: number): Observable<Stock> {
     return this.http.get<Stock>(this.url + `/retrieve-stock/${idStock}`);
+  }
+  exportExcel(): Observable<any> {
+    return this.http.get<Stock>(this.url + `/export-excel`, {
+      responseType: 'arraybuffer' as 'json',
+    });
   }
 }

@@ -9,7 +9,7 @@ import { StockService } from '../stock.service';
 })
 export class StockListComponent implements OnInit {
   stockList: any;
-
+  libelleStock: any;
   constructor(private stockService: StockService, private router: Router) {}
   ngOnInit(): void {
     this.getAllStock();
@@ -32,6 +32,26 @@ export class StockListComponent implements OnInit {
     this.stockService.deleteStock(id).subscribe((data) => {
       console.log(data);
       this.getAllStock();
+    });
+  }
+  Search() {
+    if (this.libelleStock != '') {
+      this.stockList = this.stockList.filter((res: any) => {
+        return res.libelleStock
+          .toLocaleLowerCase()
+          .match(this.libelleStock.toLocaleLowerCase());
+      });
+    } else if (this.libelleStock == '') {
+      this.ngOnInit();
+    }
+  }
+  exportToExcel() {
+    this.stockService.exportExcel().subscribe((responseMessage: any) => {
+      let file = new Blob([responseMessage], {
+        type: 'application/vnd.ms-excel',
+      });
+      var fileURL = URL.createObjectURL(file);
+      window.open(fileURL);
     });
   }
 }

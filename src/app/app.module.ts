@@ -10,6 +10,10 @@ import { UpdateStockComponent } from './update-stock/update-stock.component';
 
 import { StockDetailsComponent } from './stock-details/stock-details.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CreateReclamationComponent } from './create-reclamation/create-reclamation.component';
+import { ReclamationListComponent } from './reclamation-list/reclamation-list.component';
+import { ReclamationDetailsComponent } from './reclamation-details/reclamation-details.component';
+import { ReclamationUpdateComponent } from './reclamation-update/reclamation-update.component';
 
 @NgModule({
   declarations: [
@@ -19,8 +23,12 @@ import { AppRoutingModule } from './app-routing.module';
     UpdateStockComponent,
 
     StockDetailsComponent,
+    CreateReclamationComponent,
+    ReclamationListComponent,
+    ReclamationDetailsComponent,
+    ReclamationUpdateComponent,
   ],
-  imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

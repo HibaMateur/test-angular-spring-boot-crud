@@ -1,6 +1,6 @@
 export class Stock {
-  idStock: any;
-  qte: any;
-  qteMin: any;
-  libelleStock: any;
+  idStock: number;
+  qte: number;
+  qteMin: number;
+  libelleStock: String;
 }
